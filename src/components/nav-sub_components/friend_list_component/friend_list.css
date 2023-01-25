@@ -1,0 +1,7 @@
+.nav__message-chat-contianer {
+    background-color: var(--secondary-color);
+    width: 40vw;
+    height: 80vh;
+    position: absolute;
+    right: -1000px;
+}
