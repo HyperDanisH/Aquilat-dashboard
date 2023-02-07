@@ -6,13 +6,24 @@ import Accounts from '../../assets/nav-assets/people.svg'
 import Live from '../../assets/nav-assets/live-streaming.svg'
 import GoBtn from '../../assets/nav-assets/go-btn.svg'
 import Mikasa from '../../assets/nav-assets/dummy/Mikasa.png'
-import { VoiceJoinNotification, TextMessageNotification } from '../nav-sub_components/message/Message'
-import Friend_list from '../nav-sub_components/friend_list_component/Friend-list'
+
+//importing components
+import { VoiceJoinNotification } from '../nav-sub_components/message/Message'
+import FriendList from '../nav-sub_components/friend_list_component/Friend-list'
+import SearchbarQueries from '../nav-sub_components/searchbarQueries/SearchbarQueries'
+//to get users eachtime a user presses a key on keyboard
+import getOtherUsersBySearch from '../../utils/getOtherUsersBySearch'
+
+//importing context
+import usefulContext from '../../context/useful/usefulContext'
 
 const Nav = () => {
 
   const [notificationsState, setNotificationsState] = React.useState(false)
   const [accountState, setAccountState] = React.useState(false)
+
+  //context
+  const { setFetchedOtherUsersBySearch } = React.useContext(usefulContext)
 
 
   const toggleNotification = () => {
@@ -38,9 +49,7 @@ const Nav = () => {
               <div className="dashboard-nav__notification-box">
                 <h1>Notifications</h1>
                 <VoiceJoinNotification />
-                <TextMessageNotification />
                 <VoiceJoinNotification />
-                <TextMessageNotification />
               </div>
             </>}
           </div>
@@ -51,7 +60,7 @@ const Nav = () => {
             {accountState && <>
               <div className="dashboard-nav__notification-box">
                 <h1>Your friends</h1>
-                <Friend_list />
+                <FriendList />
               </div>
             </>}
           </div>
@@ -66,7 +75,9 @@ const Nav = () => {
             <form className='dashboard-nav__search-form'>
               <input type="search" className='dashboard-nav__search-bar'
                 placeholder='Search'
+                onChange={(e) => getOtherUsersBySearch(e, setFetchedOtherUsersBySearch)}
               />
+              <SearchbarQueries />
               <button type='submit' className='dashboard-nav__search-go-button'>Go
               <img src={GoBtn} alt="" className='dashboard-nav__search-go-img'/>
               </button>

@@ -1,0 +1,13 @@
+.avtar {
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avtar::after {
+    content: attr(data-label);
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    color: var(--font-color);
+}

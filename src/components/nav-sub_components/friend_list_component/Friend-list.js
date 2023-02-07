@@ -7,15 +7,23 @@ import ErenDummy from '../../../assets/nav-assets/dummy/eren.png'
 import VoiceNotif from '../../../assets/nav-assets/snd-voice-notif.svg'
 import Account from '../../../assets/nav-assets/Account.svg'
 
-const Message_area = () => {
-    return (
-        <>
-            <div className="nav__message-chat-contianer"></div>
-        </>
-    )
-}
+//importing context
+import usefulContext from '../../../context/useful/usefulContext'
 
-const Friend_list = () => {
+//message area was desided as a feature but would have
+// complicated the project 
+
+// const Message_area = () => {
+//     return (
+//         <>
+//             <div className="nav__message-chat-contianer"></div>
+//         </>
+//     )
+// }
+
+const FriendList = () => {
+  const usefulContextData = React.useContext(usefulContext)
+
   return (
     <>
         <div className="nav__message-container">
@@ -27,7 +35,9 @@ const Friend_list = () => {
         </div>
         </div>
         <div className="nav__message-answer-btns">
-            <button className='nav__message-message-btn' style={{marginRight: 12}}>
+            <button className='nav__message-message-btn' style={{marginRight: 12}}
+                onClick={usefulContextData.toogleFriendModal}
+            >
                 <img src={Account} alt="" />
             </button>
             <button className='nav__message-message-btn'>
@@ -40,4 +50,4 @@ const Friend_list = () => {
 }
 
 
-export default Friend_list
+export default FriendList

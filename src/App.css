@@ -3,3 +3,30 @@
     height: 100vh;
     background-color: var(--background-color);
 }
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.loader::after {
+    content: "";
+    width: 55px;
+    height: 55px;
+    border: 12px solid var(--font-color);
+    border-top-color: var(--blue);
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+    from { transform: rotate(0turn) }
+    to { transform: rotate(1turn); }
+}
